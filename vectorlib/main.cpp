@@ -1,10 +1,7 @@
 #include <iostream>
-#include "h.h"
-#include "lib1\h2.h"
 
-void main()
+
+void it_is_not_main()
 {
-  std::cout << inc(10);
-  std::cout << dec(10);
   std::cout << "\nHi\n";
 }
