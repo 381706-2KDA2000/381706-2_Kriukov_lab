@@ -1,6 +1,7 @@
 #ifndef __MULTISTACK_H
 #define __MULTISTACK_H
 #include "MStack.h"
+#include <TExeption.h>
 
 template <class ValType>
 class TMultiStack
@@ -81,7 +82,7 @@ void TMultiStack<ValType>::Print()
 }
 
 template<class ValType>
-int inline TMultiStack<ValType>::GetFreeMemSize()
+int  TMultiStack<ValType>::GetFreeMemSize()
 {
   return MemSize - CurrentCount;
 }
@@ -153,13 +154,13 @@ TMultiStack<ValType>::~TMultiStack()
 }
 
 template<class ValType>
-inline int TMultiStack<ValType>::IsEmpty(int ns) const
+ int TMultiStack<ValType>::IsEmpty(int ns) const
 {
   return pStack[ns]->IsEmpty();
 }
 
 template<class ValType>
-inline int TMultiStack<ValType>::IsFull(int ns) const
+ int TMultiStack<ValType>::IsFull(int ns) const
 {
   return pStack[ns]->IsFull();
 }
@@ -213,7 +214,7 @@ template<class ValType>
 void TMultiStack<ValType>::Put(int ns, const ValType & Val)
 {
   if (GetFreeMemSize() == 0)
-    throw DataNoMem;
+    throw TExeption(DataNoMem);
   if (pStack[ns]->IsFull())
     StackRelocation(ns);
   pStack[ns]->Put(Val);
@@ -222,7 +223,7 @@ void TMultiStack<ValType>::Put(int ns, const ValType & Val)
 }
 
 template<class ValType>
-inline ValType TMultiStack<ValType>::Get(int ns)
+ ValType TMultiStack<ValType>::Get(int ns)
 {
   StackTops[ns]--;
   CurrentCount--;

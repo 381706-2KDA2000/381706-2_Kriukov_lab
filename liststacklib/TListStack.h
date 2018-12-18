@@ -7,66 +7,67 @@
 using namespace std;
 
 template<class ValType>
-class TListStack 
+class TListStack
 {
 protected:
-	TDatLink<ValType>* pFirst; // указатель на первое звено списка
+  TDatLink<ValType>* pFirst; // указатель на первое звено списка
 public:
-	TListStack();
-	~TListStack();
-	int IsEmpty() const; // контроль переполнения СД
-	void Put(ValType Val); // добавить значение в стек
-	ValType Get(); // извлечь значение из стека
-	void Print();
+  TListStack();
+  ~TListStack();
+  int IsEmpty() const; // контроль переполнения СД
+  void Put(ValType Val); // добавить значение в стек
+  ValType Get(); // извлечь значение из стека
+  void Print();
 };
 
 template<class ValType>
 TListStack<ValType>::TListStack()
 {
-	pFirst = NULL;
+  pFirst = NULL;
 }
 template<class ValType>
-inline TListStack<ValType>::~TListStack()
+TListStack<ValType>::~TListStack()
 {
-	while (!IsEmpty())
-	{
-		TDatLink<ValType>* tmp = pFirst;
-		pFirst = pFirst->GetNextLink();
-		delete tmp;
-	}
+  while (!IsEmpty())
+  {
+    TDatLink<ValType>* tmp = pFirst;
+    pFirst = pFirst->GetNextLink();
+    delete tmp;
+  }
 }
 
 template<class ValType>
-inline int TListStack<ValType>::IsEmpty() const
+int TListStack<ValType>::IsEmpty() const
 {
-	return pFirst == 0;
+  return pFirst == 0;
 }
 template<class ValType>
 void TListStack<ValType>::Put(ValType Val)
 {
-	TDatLink<ValType>* pTemp = new TDatLink<ValType>;
-	pTemp->SetDatValue(Val);
-	pTemp->SetNextLink(pFirst);
-	pFirst = pTemp;
+  TDatLink<ValType>* pTemp = new TDatLink<ValType>;
+  pTemp->SetDatValue(Val);
+  pTemp->SetNextLink(pFirst);
+  pFirst = pTemp;
 }
 template<class ValType>
 ValType TListStack<ValType>::Get()
 {
-	if (IsEmpty())
-		throw TExeption(DataEmpty);
-	TDatLink<ValType>* pTemp = new TDatLink<ValType>;
-	ValType Val = pFirst->GetDatValue();
-	pFirst = pFirst->GetNextLink();
-	delete pTemp;
-	return Val;
+  if (IsEmpty())
+    throw TExeption(DataEmpty);
+  TDatLink<ValType>* pTemp = new TDatLink<ValType>;
+  ValType Val = pFirst->GetDatValue();
+  pFirst = pFirst->GetNextLink();
+  delete pTemp;
+  return Val;
 }
+
 template<class ValType>
 void TListStack<ValType>::Print()
 {
-	TDatLink<ValType>* pTemp = pFirst;
-	while (pTemp != NULL) {
-		cout << pTemp->GetDatValue() << " ";
-		pTemp = pTemp->GetNextLink();
-	}
+  TDatLink<ValType>* pTemp = pFirst;
+  while (pTemp != NULL) {
+    cout << pTemp->GetDatValue() << " ";
+    pTemp = pTemp->GetNextLink();
+  }
 }
 #endif

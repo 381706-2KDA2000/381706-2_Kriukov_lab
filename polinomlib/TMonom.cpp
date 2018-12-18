@@ -2,11 +2,12 @@
 
 TMonom::TMonom(int coeffval, int countval, int * powerarr)
 {
-  if (countval <= 0)
+  if (countval < 0)
     throw TExeption(DataErr);
   count = countval;
   coeff = coeffval;
-  power = new int[count];
+  if(count)
+    power = new int[count];
   if (powerarr)
     for (int i = 0; i < count; i++)
       power[i] = powerarr[i];
@@ -33,12 +34,12 @@ TMonom::~TMonom()
 }
 
 
-inline void TMonom::SetCoeff(int cval)
+ void TMonom::SetCoeff(int cval)
 {
   coeff = cval;
 }
 
-inline int TMonom::GetCoeff()
+ int TMonom::GetCoeff()
 {
   return coeff;
 }
@@ -57,7 +58,7 @@ void TMonom::SetPower(int val, int pos)
   power[pos] = val;
 }
 
-//inline TMonom* TMonom::GetNext()
+// TMonom* TMonom::GetNext()
 //{
 //  return pNextMonom;
 //}
@@ -78,41 +79,33 @@ void TMonom::SetCount(int countval)
 }
 
 
-inline int TMonom::GetCount()
+ int TMonom::GetCount()
 {
   return count;
 }
 
-template<class ValType>
-inline void TMonom<ValType>::SetNext(TMonom * _next)
-{
-  pNextMonom = _next;
-}
 
-template<class ValType>
-TMonom & TMonom<ValType>::operator=(TMonom & monom)
+TMonom & TMonom::operator=(TMonom & monom)
 {
   if (this != &monom)
   {
-    if (n != monom.n)
+    if (count != monom.count && count)
     {
       delete[] power;
-      power = new int[n];
+      power = new int[count];
     }
     count = monom.count;
     coeff = monom.coeff;
-    pNextMonom = monom.pNextMonom;
-    power = new int[n];
-    for (int i = 0; i < n; i++)
+    power = new int[count];
+    for (int i = 0; i < count; i++)
       power[i] = monom.power[i];
   }
   return *this;
 }
 
-template<class ValType>
-TMonom TMonom<ValType>::operator+(TMonom & monom)
+TMonom TMonom::operator+(TMonom & monom)
 {
-  if (n != monom.n)
+  if (count != monom.count)
     throw TExeption(DataErr);
   TMonom tmp(monom);
   if (*this == monom)
@@ -122,10 +115,10 @@ TMonom TMonom<ValType>::operator+(TMonom & monom)
   return tmp;
 }
 
-template<class ValType>
-inline TMonom TMonom<ValType>::operator-(TMonom & monom)
+
+ TMonom TMonom::operator-(TMonom & monom)
 {
-  if (n != monom.n)
+  if (count != monom.count)
     throw TExeption(DataErr);
   TMonom tmp(monom);
   if (*this == monom)
@@ -135,10 +128,9 @@ inline TMonom TMonom<ValType>::operator-(TMonom & monom)
   return tmp;
 }
 
-template<class ValType>
-TMonom TMonom<ValType>::operator*(TMonom & monom)
+TMonom TMonom::operator*(TMonom & monom)
 {
-  if (n != monom.n)
+  if (count != monom.count)
     throw TExeption(DataErr);
   TMonom tmp(monom);
   tmp.coeff = coeff * monom.coeff;
@@ -147,8 +139,7 @@ TMonom TMonom<ValType>::operator*(TMonom & monom)
   return tmp;
 }
 
-template<class ValType>
-bool TMonom<ValType>::operator>(TMonom & monom)
+bool TMonom::operator>(TMonom & monom)
 {
   if (count != monom.count)
     throw TExeption(DataErr);
@@ -160,8 +151,7 @@ bool TMonom<ValType>::operator>(TMonom & monom)
   return false;
 }
 
-template<class ValType>
-bool TMonom<ValType>::operator<(TMonom & monom)
+bool TMonom::operator<(TMonom & monom)
 {
   if (count != monom.count)
     throw TExeption(DataErr);
@@ -172,8 +162,9 @@ bool TMonom<ValType>::operator<(TMonom & monom)
       return false;
   return false;
 }
-template<class ValType>
-bool TMonom<ValType>::operator==(TMonom & monom)
+
+
+bool TMonom::operator==(TMonom & monom)
 {
   if (count != monom.count)
     throw TExeption(DataErr);
@@ -185,9 +176,9 @@ bool TMonom<ValType>::operator==(TMonom & monom)
 
 ostream & operator<<(ostream & os, TMonom & tm)
 {
-  os << tm.coeff;
-  for (int i = 0; i < tm.count; i++)
-    os << "x" << i << "^" << tm.power[i];
-  cout << endl;
+  os << tm.coeff << '*';
+  for (int i = 0; i < tm.count -1; i++)
+    os << "x" << i << "^" << tm.power[i] << '*';
+  os << "x" << tm.count - 1 << "^" << tm.power[tm.count - 1];
   return os;
 }

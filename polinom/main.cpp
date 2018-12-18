@@ -1,27 +1,27 @@
 #include <conio.h>
+#include "TPolinom.h"
 #include <iostream>
-#include <TListStack.h>
-#include <time.h>
 
 void main() 
 {
-	setlocale(LC_ALL, "");
-	srand(time(NULL));
-	TListStack<int> mst;
-	int code, temp, val = 0;
-	cout << "Тестирование системы поддержки стеков(списки)" << endl;
-	cout << "Нажмите любую клавишу" << endl;
-	while (1)
-	{
-		val++;
-		code = rand()%4;
-		if (code<2)
-			mst.Put(val);
-		else if(!mst.IsEmpty()) 
-		temp = mst.Get();
-		if (kbhit()) break;
-	}
-	getch();
-	cout << "Печать стека" << endl;
-	mst.Print();
+  setlocale(LC_ALL, "");
+  cout << "Тестирование полиномов" << endl;
+  TPolinom p;
+  for (int i = 0; i < 5; i++)
+  {
+    int ms[] = { i+1, i+2, i+3 };
+    TMonom m(i*2, 3, ms);
+    p += m;
+  }
+  cout << "1 полином" << endl << p;
+  TPolinom q;
+  for (int i = 0; i < 5; i++)
+  {
+    int ms[] = { i + 1, i + 2, i + 3 };
+    TMonom m(i+ 5, 3, ms);
+    q += m;
+  }
+  cout << "2 полином" << endl << q;
+  TPolinom r = p + q;
+  cout << "Полином-результат" << endl << r;
 }

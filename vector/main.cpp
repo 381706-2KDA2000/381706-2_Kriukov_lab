@@ -1,7 +1,23 @@
-#include "TVector.h"
+#include <iostream>
+#include "TMatrix.h"
 
-int main()
+
+int main(int argc, char* argv[]) 
 {
-	TVector<int> v(3, 0);
-	return 0;
+  setlocale(LC_ALL, "");
+  TMatrix<int> a(5), b(5), c(5);
+  int i, j;
+  cout << "Тестирование программ поддержки треугольных матриц" << endl;
+  for (i = 0; i<5; i++)
+    for (j = i; j < 5; j++) 
+    {
+      a[i][j] = i * 10 + j;
+      b[i][j] = (i * 10 + j) * 100;
+    }
+  c = a + b;
+  cout << "Matrix a = " << endl << a << endl;
+  cout << "Matrix b = " << endl << b << endl;
+  cout << "Matrix c = a + b" << endl << c << endl;
+  cout << "Нажмите любую клавишу" << endl;
+  return 0;
 }

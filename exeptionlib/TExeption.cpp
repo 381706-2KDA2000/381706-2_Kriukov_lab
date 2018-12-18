@@ -2,5 +2,5 @@
 
 TExeption::TExeption(int ex)
 {
-	RetCode = ex;
+  RetCode = ex;
 }

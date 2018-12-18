@@ -5,44 +5,44 @@
 template<class ValType>
 class TDatLink {
 protected:
-	ValType Value; // значение
-	TDatLink* pNext; // указатель на следующее звено
+  ValType value; // значение
+  TDatLink* pNext; // указатель на следующее звено
 public:
-	TDatLink(ValType Val = 0, TDatLink* next = NULL);
-	void SetDatValue(ValType Val);
-	ValType GetDatValue();
-	void SetNextLink(TDatLink* pLink);
-	TDatLink* GetNextLink();
+  TDatLink(ValType Val = 0, TDatLink* next = NULL);
+  void SetDatValue(ValType Val);
+  ValType GetDatValue();
+  void SetNextLink(TDatLink* pLink);
+  TDatLink* GetNextLink();
 };
 #endif
 
 template<class ValType>
-inline TDatLink<ValType>::TDatLink(ValType Val, TDatLink* next)
+TDatLink<ValType>::TDatLink(ValType Val, TDatLink* next)
 {
-	Value = Val;
-	pNext = next;
+  value = Val;
+  pNext = next;
 }
 
 template<class ValType>
-inline void TDatLink<ValType>::SetDatValue(ValType Val)
+void TDatLink<ValType>::SetDatValue(ValType Val)
 {
-	Value = Val; 
+  value = Val;
 }
 
 template<class ValType>
-inline ValType TDatLink<ValType>::GetDatValue()
+ValType TDatLink<ValType>::GetDatValue()
 {
-	return Value;
+  return value;
 }
 
 template<class ValType>
-inline void TDatLink<ValType>::SetNextLink(TDatLink * pLink)
+void TDatLink<ValType>::SetNextLink(TDatLink * pLink)
 {
-	pNext = pLink; 
+  pNext = pLink;
 }
 
 template<class ValType>
-inline TDatLink<ValType> * TDatLink<ValType>::GetNextLink()
+TDatLink<ValType> * TDatLink<ValType>::GetNextLink()
 {
-	return pNext;
+  return pNext;
 }

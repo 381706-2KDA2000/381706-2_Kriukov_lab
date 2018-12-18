@@ -8,8 +8,8 @@
 
 class TExeption {
 protected:
-	int RetCode; // Код завершения
+  int RetCode; // Код завершения
 public:
-	TExeption(int);
+  TExeption(int);
 };
 #endif

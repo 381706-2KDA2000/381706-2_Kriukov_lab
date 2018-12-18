@@ -21,10 +21,8 @@ public:
   int GetCoeff();
   int GetPower(int pos);
   void SetPower(int val, int pos);
-  //TMonom* GetNext();
   void SetCount(int countval);
   int GetCount();
-  //void SetNext(TMonom* _next);
 
   TMonom& operator = (TMonom& monom);
   TMonom operator + (TMonom& monom);

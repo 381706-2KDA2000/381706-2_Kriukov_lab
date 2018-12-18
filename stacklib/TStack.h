@@ -5,88 +5,88 @@
 #include <TExeption.h>
 
 template <class ValType>
-class TStack : public TDataCom
+class TStack
 {
 protected: // поля
-	ValType* Mem; // память для СД
-	int Top; // индекс последнего занятого в Mem
-	int MemSize;
+  ValType * mem; // память для СД
+  int top; // индекс последнего занятого в Mem
+  int memSize;
 public:
-	TStack(int Size = 32);
-	~TStack();
-	int IsEmpty(); // контроль пустоты
-	int GetSize();
-	int GetCount();// число элементов в стеке
-	int IsFull(); // контроль переполнения
-	void Put(const int Val); // добавить значение
-	ValType Get(); // извлечь значение
-	void Print();
+  TStack(int Size = 32);
+  ~TStack();
+  int IsEmpty(); // контроль пустоты
+  int GetSize();
+  int GetCount();// число элементов в стеке
+  int IsFull(); // контроль переполнения
+  void Put(const int Val); // добавить значение
+  ValType Get(); // извлечь значение
+  void Print();
 };
 
 template<class ValType>
 TStack<ValType>::TStack(int Size)
 {
-	if (Size < 0)
-		throw TExeption(DataErr);
-	else if (Size == 0)
-		Mem = NULL;
-	else
-		Mem = new ValType[Size];
-	Top = -1;
-	MemSize = Size;
+  if (Size < 0)
+    throw TExeption(DataErr);
+  else if (Size == 0)
+    mem = NULL;
+  else
+    mem = new ValType[Size];
+  top = -1;
+  memSize = Size;
 }
 
 template<class ValType>
 TStack<ValType>::~TStack()
 {
-	delete[]Mem;
+  delete[]mem;
 }
 
 template<class ValType>
-inline int TStack<ValType>::IsEmpty()
+int TStack<ValType>::IsEmpty()
 {
-	return Top == -1;
+  return top == -1;
 }
 
 template<class ValType>
-inline int TStack<ValType>::GetSize()
+int TStack<ValType>::GetSize()
 {
-	return MemSize;
+  return memSize;
 }
 
 template<class ValType>
-inline int TStack<ValType>::GetCount()
+int TStack<ValType>::GetCount()
 {
-	return Top + 1;
+  return top + 1;
 }
 
 template<class ValType>
-inline int TStack<ValType>::IsFull()
+int TStack<ValType>::IsFull()
 {
-	return Top == (MemSize - 1);
+  return top == (memSize - 1);
 }
 
 template<class ValType>
-inline void TStack<ValType>::Put(const int Val)
+void TStack<ValType>::Put(const int Val)
 {
-	if (IsFull())
-		throw TExeption(DataFull);
-	Mem[++Top] = Val;
+  if (IsFull())
+    throw TExeption(DataFull);
+  mem[++top] = Val;
 }
 
 template<class ValType>
-inline ValType TStack<ValType>::Get()
+ValType TStack<ValType>::Get()
 {
-	if (IsEmpty())
-		throw TExeption(DataEmpty);
-	return Mem[Top--];
+  if (IsEmpty())
+    throw TExeption(DataEmpty);
+  return mem[top--];
 }
 
 template <class ValType>
 void TStack<ValType>::Print() { // печать значений стека
-	for (int i = 0; i< Top + 1; i++)
-		printf("%d ", Mem[i]);
-	printf("\n");
+  for (int i = 0; i< top + 1; i++)
+    printf("%d ", mem[i]);
+  printf("\n");
 }
 
 #endif
