@@ -10,7 +10,7 @@ protected:
 public:
   TDatLink(ValType Val = 0, TDatLink* next = NULL);
   void SetDatValue(ValType Val);
-  ValType GetDatValue();
+  ValType& GetDatValue();
   void SetNextLink(TDatLink* pLink);
   TDatLink* GetNextLink();
 };
@@ -30,7 +30,7 @@ void TDatLink<ValType>::SetDatValue(ValType Val)
 }
 
 template<class ValType>
-ValType TDatLink<ValType>::GetDatValue()
+ValType& TDatLink<ValType>::GetDatValue()
 {
   return value;
 }

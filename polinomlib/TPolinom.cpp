@@ -116,7 +116,7 @@ TPolinom & TPolinom::operator+=(TMonom & m)
   return *this;
 }
 
-TMonom & TPolinom::operator[](int pos)
+TMonom & TPolinom::operator[](int pos) const
 {
   return GetDatValue(pos);
 }

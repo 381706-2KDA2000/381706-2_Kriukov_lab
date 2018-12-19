@@ -18,13 +18,13 @@ public:
   TDatList(const TDatList& dl);
   ~TDatList() { DelList(); }
   // доступ
-  ValType GetDatValue(int num) const; // значение
+  ValType& GetDatValue(int num) const; // значение
   int IsEmpty() const { return pFirst == NULL; } // список пуст ?
   int GetListLength() const { return listLen; } // к-во звеньев
                                                 // вставка звеньев
-  void InsFirst(ValType &Val); // вставить перед первым
-  void InsLast(ValType &Val); // вставить последним
-  void InsTo(int num, ValType& Val); // вставить на позицию
+  void InsFirst(const ValType &Val); // вставить перед первым
+  void InsLast(const ValType &Val); // вставить последним
+  void InsTo(int num, const ValType& Val); // вставить на позицию
                                     // удаление звеньев
   void DelFirst(); // удалить первое звено 
   void Del(int num); // произвольное звено
@@ -72,7 +72,7 @@ TDatList<ValType>::TDatList(const TDatList & dl)
 }
 
 template<class ValType>
-ValType TDatList<ValType>::GetDatValue(int num) const
+ValType& TDatList<ValType>::GetDatValue(int num) const
 {
   if ((num < 0) || (num >(listLen - 1)))
     throw TExeption(DataErr);
@@ -82,7 +82,7 @@ ValType TDatList<ValType>::GetDatValue(int num) const
   return pTemp->GetDatValue();
 }
 template<class ValType>
-void TDatList<ValType>::InsFirst(ValType &Val)
+void TDatList<ValType>::InsFirst(const ValType &Val)
 {
   TDatLink<ValType>* tmp = new TDatLink<ValType>(Val, pFirst);
   pFirst = tmp;
@@ -92,7 +92,7 @@ void TDatList<ValType>::InsFirst(ValType &Val)
 }
 
 template<class ValType>
-void TDatList<ValType>::InsLast(ValType& Val)
+void TDatList<ValType>::InsLast(const ValType& Val)
 {
   TDatLink<ValType>* tmp = new TDatLink<ValType>(Val, NULL);
   if (listLen == 0)
@@ -103,7 +103,7 @@ void TDatList<ValType>::InsLast(ValType& Val)
   listLen++;
 }
 template<class ValType>
-void TDatList<ValType>::InsTo(int num, ValType& Val)
+void TDatList<ValType>::InsTo(int num,const ValType& Val)
 {
   if ((num < 0) || (num >(listLen - 1)))
     throw TExeption(DataErr);

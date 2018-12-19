@@ -13,7 +13,7 @@ public:
   TPolinom operator-(TPolinom &q);
   TPolinom operator*(TPolinom &q);
   TPolinom & operator+=(TMonom &m);
-  TMonom & operator[](int);
+  TMonom & operator[](int) const;
   TPolinom & operator=(TPolinom &q); // присваивание
   friend ostream& operator<<(ostream &os, TPolinom &q);
 };
