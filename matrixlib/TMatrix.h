@@ -9,7 +9,7 @@ using namespace std;
 
 
 template <class ValType>
-class TMatrix : public TVector<TVector<ValType>>
+class TMatrix : public TVector<TVector<ValType> >
 {
 public:
   TMatrix(int s = 10);
@@ -38,21 +38,21 @@ public:
 
 
 template<class ValType>
-TMatrix<ValType>::TMatrix(int s) : TVector<TVector<ValType>>(s)
+TMatrix<ValType>::TMatrix(int s) : TVector<TVector<ValType> >(s)
 {
   for (int i = 0; i < s; i++)
     pVector[i] = TVector<ValType>(s - i, i);
 }
 
 template<class ValType>
-TMatrix<ValType>::TMatrix(const TMatrix & mt) : TVector<TVector<ValType>>(mt)
+TMatrix<ValType>::TMatrix(const TMatrix & mt) : TVector<TVector<ValType> >(mt)
 {
 }
 
 
 
 template<class ValType>
-TMatrix<ValType>::TMatrix(const TVector<TVector<ValType>>& mt) : TVector<TVector<ValType>>(mt)
+TMatrix<ValType>::TMatrix(const TVector<TVector<ValType>>& mt) : TVector<TVector<ValType> >(mt)
 {
 }
 

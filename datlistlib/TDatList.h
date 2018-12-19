@@ -34,8 +34,8 @@ public:
 template<class ValType>
 TDatLink<ValType>* TDatList<ValType>::GetLink(ValType Val, TDatLink<ValType>* pLink)
 {
-  TDatLink<ValType>* tmp = new TDatLink<ValType>(Val, pLink)
-    return tmp;
+  TDatLink<ValType>* tmp = new TDatLink<ValType>(Val, pLink);
+  return tmp;
 }
 
 template<class ValType>

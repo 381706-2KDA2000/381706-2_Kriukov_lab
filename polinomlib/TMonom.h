@@ -14,7 +14,7 @@ protected:
   //TMonom* pNextMonom; // указатель на следующий моном
 public:
   TMonom(int cval = 1, int ival = 0, int* powerarr = NULL);
-  TMonom(TMonom& monom);
+  TMonom(const TMonom& monom);
   ~TMonom();
 
   void SetCoeff(int cval);
@@ -24,13 +24,13 @@ public:
   void SetCount(int countval);
   int GetCount();
 
-  TMonom& operator = (TMonom& monom);
-  TMonom operator + (TMonom& monom);
-  TMonom operator - (TMonom& monom);
-  TMonom operator * (TMonom& monom);
-  bool operator > (TMonom& monom);
-  bool operator < (TMonom& monom);
-  bool operator == (TMonom& monom);
+  TMonom& operator = (const TMonom& monom);
+  TMonom operator + (const TMonom& monom);
+  TMonom operator - (const TMonom& monom);
+  TMonom operator * (const TMonom& monom);
+  bool operator > (const TMonom& monom);
+  bool operator < (const TMonom& monom);
+  bool operator == (const TMonom& monom);
   friend ostream& operator<<(ostream &os, TMonom &tm);
   friend class TPolinom;
 };

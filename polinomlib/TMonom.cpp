@@ -17,7 +17,7 @@ TMonom::TMonom(int coeffval, int countval, int * powerarr)
 //  pNextMonom = NULL;
 }
 
-TMonom::TMonom(TMonom & monom)
+TMonom::TMonom(const TMonom & monom)
 {
   count = monom.count;
   coeff = monom.coeff;
@@ -85,7 +85,7 @@ void TMonom::SetCount(int countval)
 }
 
 
-TMonom & TMonom::operator=(TMonom & monom)
+TMonom & TMonom::operator=(const TMonom & monom)
 {
   if (this != &monom)
   {
@@ -103,7 +103,7 @@ TMonom & TMonom::operator=(TMonom & monom)
   return *this;
 }
 
-TMonom TMonom::operator+(TMonom & monom)
+TMonom TMonom::operator+(const TMonom & monom)
 {
   if (count != monom.count)
     throw TExeption(DataErr);
@@ -116,7 +116,7 @@ TMonom TMonom::operator+(TMonom & monom)
 }
 
 
- TMonom TMonom::operator-(TMonom & monom)
+ TMonom TMonom::operator-(const TMonom & monom)
 {
   if (count != monom.count)
     throw TExeption(DataErr);
@@ -128,7 +128,7 @@ TMonom TMonom::operator+(TMonom & monom)
   return tmp;
 }
 
-TMonom TMonom::operator*(TMonom & monom)
+TMonom TMonom::operator*(const TMonom & monom)
 {
   if (count != monom.count)
     throw TExeption(DataErr);
@@ -139,7 +139,7 @@ TMonom TMonom::operator*(TMonom & monom)
   return tmp;
 }
 
-bool TMonom::operator>(TMonom & monom)
+bool TMonom::operator>(const TMonom & monom)
 {
   if (count != monom.count)
     throw TExeption(DataErr);
@@ -151,7 +151,7 @@ bool TMonom::operator>(TMonom & monom)
   return false;
 }
 
-bool TMonom::operator<(TMonom & monom)
+bool TMonom::operator<(const TMonom & monom)
 {
   if (count != monom.count)
     throw TExeption(DataErr);
@@ -164,7 +164,7 @@ bool TMonom::operator<(TMonom & monom)
 }
 
 
-bool TMonom::operator==(TMonom & monom)
+bool TMonom::operator==(const TMonom&  monom)
 {
   if (count != monom.count)
     throw TExeption(DataErr);

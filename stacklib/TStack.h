@@ -85,8 +85,8 @@ ValType TStack<ValType>::Get()
 template <class ValType>
 void TStack<ValType>::Print() { // печать значений стека
   for (int i = 0; i< top + 1; i++)
-    printf("%d ", mem[i]);
-  printf("\n");
+    std::cout << mem[i];
+  std::cout << std::endl;
 }
 
 #endif
