@@ -2,7 +2,7 @@
 #include "TPolinom.h"
 #include <iostream>
 
-void main() 
+int main() 
 {
   setlocale(LC_ALL, "");
   cout << "Тестирование полиномов" << endl;
@@ -24,4 +24,5 @@ void main()
   cout << "2 полином" << endl << q;
   TPolinom r = p + q;
   cout << "Полином-результат" << endl << r;
+  return 0;
 }

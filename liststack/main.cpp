@@ -1,8 +1,8 @@
 #include <iostream>
 #include <TListStack.h>
-#include <time.h>
+#include <ctime>
 
-void main()
+int main()
 {
   setlocale(LC_ALL, "");
   srand(time(NULL));
@@ -21,4 +21,5 @@ void main()
   }
   cout << "Печать стека" << endl;
   mst.Print();
+  return 0;
 }

@@ -1,10 +1,10 @@
 #include "TDatList.h"
 #include <iostream>
-#include "time.h"
+#include <ctime>
 
 using namespace std;
 
-void main()
+int main()
 {
   setlocale(LC_ALL, "");
   srand(time(0));
@@ -25,4 +25,5 @@ void main()
       << pVal << endl;
   }
   st.DelList();
+  return 0;
 }

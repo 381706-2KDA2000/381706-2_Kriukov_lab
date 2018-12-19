@@ -1,7 +1,7 @@
 #include <iostream>
 #include "TMultiStack.h"
 #include "TQueue.h"
-#include "time.h"
+#include <ctime>
 
 using namespace std;
 
