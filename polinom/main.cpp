@@ -1,6 +1,6 @@
-#include <conio.h>
 #include "TPolinom.h"
 #include <iostream>
+#include <cstdlib>
 
 int main() 
 {
