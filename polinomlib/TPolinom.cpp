@@ -86,12 +86,14 @@ TPolinom TPolinom::operator*(TPolinom & q)
   TDatLink<TMonom>* tmp1 = pFirst;
   TDatLink<TMonom>* tmp2 = q.pFirst;
   for (int i = 0; i < this->listLen; i++)
+  {
     for (int i = 0; i < q.listLen; i++)
     {
       res.InsLast(tmp1->GetDatValue() * tmp2->GetDatValue());
       tmp1 = tmp1->GetNextLink();
-      tmp2 = tmp2->GetNextLink();
     }
+    tmp2 = tmp2->GetNextLink();
+  }
   return res;
 }
 
