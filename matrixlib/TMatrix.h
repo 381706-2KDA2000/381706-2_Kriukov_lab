@@ -70,13 +70,13 @@ TMatrix<ValType> & TMatrix<ValType>::operator=(const TMatrix & mt)
 {
   if (mt.pVector != this->pVector)
   {
-    if (size != mt.size)
+    if (this->size != mt.size)
     {
       delete[]this->pVector;
-      pVector = new TVector<ValType>[mt.size];
+      this->pVector = new TVector<ValType>[mt.size];
       this->size = mt.size;
     }
-    startIndex = mt.startIndex;
+    this->startIndex = mt.startIndex;
     for (int i = 0; i < this->size; i++)
       this->pVector[i] = mt.pVector[i];
   }
