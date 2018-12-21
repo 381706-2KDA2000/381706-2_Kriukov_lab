@@ -41,7 +41,7 @@ template<class ValType>
 TMatrix<ValType>::TMatrix(int s) : TVector<TVector<ValType> >(s)
 {
   for (int i = 0; i < s; i++)
-    pVector[i] = TVector<ValType>(s - i, i);
+    this->pVector[i] = TVector<ValType>(s - i, i);
 }
 
 template<class ValType>
@@ -60,8 +60,8 @@ template<class ValType>
 int TMatrix<ValType>::operator==(const TMatrix & mt)
 {
   int res = 1;
-  for (int i = 0; i < size; i++)
-    res *= (pVector[i] == mt.pVector[i]);
+  for (int i = 0; i < this->size; i++)
+    res *= (this->pVector[i] == mt.pVector[i]);
   return res;
 }
 
@@ -70,49 +70,49 @@ TMatrix<ValType> & TMatrix<ValType>::operator=(const TMatrix & mt)
 {
   if (mt.pVector != pVector)
   {
-    if (size != mt.size)
+    if (this->size != mt.size)
     {
       delete[]pVector;
       pVector = new TVector<ValType>[mt.size];
-      size = mt.size;
+      this->size = mt.size;
     }
-    startIndex = mt.startIndex;
-    for (int i = 0; i < size; i++)
-      pVector[i] = mt.pVector[i];
+    this->startIndex = mt.startIndex;
+    for (int i = 0; i < this->size; i++)
+      this->pVector[i] = mt.pVector[i];
   }
   return *this;
 }
 template<class ValType>
 TMatrix<ValType> TMatrix<ValType>::operator+(const TMatrix & mt)
 {
-  if (size != mt.size)
+  if (this->size != mt.size)
     throw 1;
-  TMatrix res(size);
+  TMatrix res(this->size);
   for (int i = 0; i < size; i++)
-    res.pVector[i] = pVector[i] + mt.pVector[i];
+    res.pVector[i] = this->pVector[i] + mt.pVector[i];
   return res;
 }
 
 template<class ValType>
 TMatrix<ValType> TMatrix<ValType>::operator-(const TMatrix & mt)
 {
-  if (size != mt.size)
+  if (this->size != mt.size)
     throw 1;
-  TMatrix res(size);
-  for (int i = 0; i < size; i++)
-    res.pVector[i] = pVector[i] - mt.pVector[i];
+  TMatrix res(this->size);
+  for (int i = 0; i < this->size; i++)
+    res.pVector[i] = this->pVector[i] - mt.pVector[i];
   return res;
 }
 template<class ValType>
 TMatrix<ValType> TMatrix<ValType>::operator*(const TMatrix & mt)
 {
-  if (size != mt.size)
+  if (this->size != mt.size)
     throw 1;
-  TMatrix res(size);
-  for (int i = 0; i < size; i++)
-    for (int j = i; j < size; j++)
+  TMatrix res(this->size);
+  for (int i = 0; i < this->size; i++)
+    for (int j = i; j < this->size; j++)
       for (int k = i; k < j + 1; k++)
-        res.pVector[i][j] += pVector[i][k] * mt.pVector[k][j];
+        res.pVector[i][j] += this->pVector[i][k] * mt.pVector[k][j];
   return res;
 }
 #endif

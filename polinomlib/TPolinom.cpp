@@ -14,9 +14,9 @@ TPolinom::TPolinom(const TDatList<TMonom>& q) : TDatList<TMonom>(q)
 
 TPolinom TPolinom::operator+(const TPolinom & q)
 {
-  if (listLen != q.listLen)
+  if (this->listLen != q.listLen)
     throw TExeption(DataErr);
-  TDatLink<TMonom>* tmp1 = pFirst;
+  TDatLink<TMonom>* tmp1 = this->pFirst;
   TDatLink<TMonom>* tmp2 = q.pFirst;
   TPolinom res;
   while (tmp1 && tmp2)
@@ -48,7 +48,7 @@ TPolinom TPolinom::operator+(const TPolinom & q)
 
 TPolinom TPolinom::operator-(TPolinom & q)
 {
-  if (listLen != q.listLen)
+  if (this->listLen != q.listLen)
     throw TExeption(DataErr);
   TDatLink<TMonom>* tmp1 = pFirst;
   TDatLink<TMonom>* tmp2 = q.pFirst;
@@ -85,7 +85,7 @@ TPolinom TPolinom::operator*(TPolinom & q)
   TPolinom res;
   TDatLink<TMonom>* tmp1 = pFirst;
   TDatLink<TMonom>* tmp2 = q.pFirst;
-  for (int i = 0; i < listLen; i++)
+  for (int i = 0; i < this->listLen; i++)
     for (int i = 0; i < q.listLen; i++)
     {
       res.InsLast(tmp1->GetDatValue() * tmp2->GetDatValue());
@@ -125,7 +125,7 @@ TPolinom & TPolinom::operator=(TPolinom & q)
 {
   if (this != &q)
   {
-    listLen = q.listLen;
+    this->listLen = q.listLen;
     TDatLink<TMonom>* pTemp = q.pFirst;
     pFirst = new TDatLink<TMonom>(pTemp->GetDatValue(), NULL);
     TDatLink<TMonom>* TmpLast = pFirst;
@@ -137,7 +137,7 @@ TPolinom & TPolinom::operator=(TPolinom & q)
       TmpLast->SetNextLink(TmpCurr);
       TmpLast = TmpCurr;
     }
-    pLast = TmpCurr;
+    this->pLast = TmpCurr;
   }
   return *this;
 }

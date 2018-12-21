@@ -22,12 +22,9 @@ int main()
   // печать списка
   for (int i = 0; i < st.GetListLength(); i++)
   {
-    if (!st.IsEmpty())
-    {
       pVal = st.GetDatValue(i);
       cout << "Взяли из списка значение "
         << pVal << endl;
-    }
   }
   return 0;
 }

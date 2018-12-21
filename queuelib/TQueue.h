@@ -17,7 +17,7 @@ public:
 template<class ValType>
 int TQueue<ValType>::GetNextIndex(int index)
 {
-  return (++index % memSize);
+  return (++index % this->memSize);
 }
 
 template<class ValType>
@@ -28,9 +28,9 @@ ValType TQueue<ValType>::Get()
     throw TExeption(DataEmpty);
   else
   {
-    temp = mem[li];
+    temp = this->mem[li];
     li = GetNextIndex(li);
-    top--;
+    this->top--;
   }
   return temp;
 }

@@ -14,16 +14,16 @@ public:
 template<class ValType>
 MStack<ValType>::MStack(ValType * ind, int Size)
 {
-  mem = ind;
-  top = -1;
-  memSize = Size;
+  this->mem = ind;
+  this->top = -1;
+  this->memSize = Size;
 }
 
 
 template<class ValType>
 void MStack<ValType>::SetMem(ValType * ind, int Size)
 {
-  mem = ind;
-  memSize = Size;
+  this->mem = ind;
+  this->memSize = Size;
 }
 #endif
