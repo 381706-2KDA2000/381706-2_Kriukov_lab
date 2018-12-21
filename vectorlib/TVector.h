@@ -119,7 +119,7 @@ int TVector<ValType>::operator==(const TVector & v)
 template<class ValType>
 TVector<ValType> & TVector<ValType>::operator=(const TVector &v)
 {
-  if (v.pVector != pVector)
+  if (v.pVector != this->pVector)
   {
     size = v.size;
     startIndex = v.startIndex;
@@ -127,7 +127,7 @@ TVector<ValType> & TVector<ValType>::operator=(const TVector &v)
       delete[]pVector;
     pVector = new ValType[size];
     for (int i = 0; i < size; i++)
-      pVector[i] = v.pVector[i];
+      this->pVector[i] = v.pVector[i];
   }
   return *this;
 }

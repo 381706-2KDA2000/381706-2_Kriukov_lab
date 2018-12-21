@@ -88,7 +88,7 @@ TMatrix<ValType> TMatrix<ValType>::operator+(const TMatrix & mt)
   if (this->size != mt.size)
     throw 1;
   TMatrix res(this->size);
-  for (int i = 0; i < size; i++)
+  for (int i = 0; i < this->size; i++)
     res.pVector[i] = this->pVector[i] + mt.pVector[i];
   return res;
 }
