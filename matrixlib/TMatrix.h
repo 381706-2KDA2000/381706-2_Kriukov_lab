@@ -68,7 +68,7 @@ int TMatrix<ValType>::operator==(const TMatrix & mt)
 template<class ValType>
 TMatrix<ValType> & TMatrix<ValType>::operator=(const TMatrix & mt)
 {
-  if (mt.pVector != pVector)
+  if (mt.pVector != this->pVector)
   {
     if (this->size != mt.size)
     {
