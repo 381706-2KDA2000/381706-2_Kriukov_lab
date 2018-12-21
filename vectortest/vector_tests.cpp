@@ -136,3 +136,16 @@ TEST(TVector, can_multiply_vectors)
 
   EXPECT_EQ(res, (MyV1 * MyV2));
 }
+
+TEST(TVector, can_multiply_vector_and_number)
+{
+  const int size = 2;
+  TVector<int> MyV1(size, 0), MyV2(size, 0);
+  for (int i = 0; i < size; i++)
+  {
+    MyV1[i] = 3;
+    MyV2[i] = 6;
+  }
+
+  EXPECT_EQ(1, MyV2 == (MyV1 * 2));
+}

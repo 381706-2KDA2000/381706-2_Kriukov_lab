@@ -143,7 +143,7 @@ TVector<ValType> TVector<ValType>::operator*(const ValType & val)
 {
   TVector<ValType> res(size, startIndex);
   for (int i = 0; i < size; i++)
-    res[i] *= val;
+    res[i] = pVector[i]*val;
   return res;
 }
 template<class ValType>
