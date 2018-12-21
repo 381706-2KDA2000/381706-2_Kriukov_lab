@@ -119,7 +119,7 @@ int TVector<ValType>::operator==(const TVector & v)
 template<class ValType>
 TVector<ValType> & TVector<ValType>::operator=(const TVector &v)
 {
-  if (v.pVector != >pVector)
+  if (v.pVector != pVector)
   {
     size = v.size;
     startIndex = v.startIndex;
