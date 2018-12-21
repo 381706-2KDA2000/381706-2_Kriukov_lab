@@ -9,7 +9,6 @@ script:
   - cmake ../381706-2_Kriukov_lab
   - make -j
   - ./vector/vector
-  - ls
-  -./vectortest/vectortest
+  -./vectortest
 notifications:
   email: false
