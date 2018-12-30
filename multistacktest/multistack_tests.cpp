@@ -40,10 +40,8 @@ TEST(TMultiStack, relocation_not_change_stack)
 	const int Size = 4;
 	const int Count = 2;
 	TMultiStack<int> MyMultiStack(Size, Count), MyMultiStack1(Size, Count);
-	for (int j = 0; j < Count; j++)
-		for (int i = 0; i < Size/2; i++)
-			MyMultiStack.Put(0, 7);
-	MyMultiStack.Get(0);
+	for (int i = 0; i < 2; i++)
+		MyMultiStack.Put(0, 7);
 	MyMultiStack1 = MyMultiStack;
 	MyMultiStack.Put(0, 3);
 	MyMultiStack.Get(0);

@@ -44,6 +44,7 @@ void TMultiStack<ValType>::StackRelocation(int nst)
     pStackMem[0] = &StackMem[0];
     for (int i = 1; i < StackCount; i++)
       pStackMem[i] = pStackMem[i - 1] + StackTops[i - 1] + temp / StackCount;
+    pStackMem[nst] += temp % StackCount;
   }
   StackTops[nst] -= 1;
   for (int i = 0; i < StackCount; i++)
