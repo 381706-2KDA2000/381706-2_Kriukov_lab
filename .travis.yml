@@ -8,6 +8,8 @@ before_script:
 script:
   - cmake ../381706-2_Kriukov_lab
   - make -j
-  - ./vector/vector
+#  - ./vector/vector
+  - cd ./bin/
+  -./vectortest
 notifications:
   email: false
