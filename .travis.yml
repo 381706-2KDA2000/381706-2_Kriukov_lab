@@ -8,22 +8,14 @@ before_script:
 script:
   - cmake ../381706-2_Kriukov_lab
   - make -j
-  - ./vector/vector
   - ./vectortest/vectortest
   - ./matrixtest/matrixtest
-  - ./stack/stack
   - ./stacktest/stacktest
-  - ./multistack/multistack
   - ./multistacktest/multistacktest
-  - ./queue/queue
-  - ./queuetest/
-  - ./datlist/datlist
+  - ./queuetest/queuetest
   - ./datlisttest/datlisttest
   - ./liststacktest/liststacktest
-  - ./liststack/liststack
   - ./arrlisttest/arrlisttest
-  - ./arrlist/arrlist
   - ./polinomtest/polinomtest
-  - ./polinom/polinom
 notifications:
   email: false
