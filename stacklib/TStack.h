@@ -39,7 +39,9 @@ TStack<ValType>::TStack(int Size)
 template<class ValType>
 TStack<ValType>::~TStack()
 {
-  delete[]mem;
+  if(mem != NULL)
+    delete[]mem;
+  mem = NULL;
 }
 
 template<class ValType>

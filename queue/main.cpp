@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
   TQueue<int> st(100);
   int temp;
   cout << "Тестирование программ поддержки структуры типа очереди" << endl;
-  for (int i = 0; i<35; i++) {
+  for (int i = 0; i<16; i++) {
     st.Put(i);
     cout << "Положили значение " << i << endl;
   }
@@ -20,6 +20,5 @@ int main(int argc, char* argv[])
     temp = st.Get();
     cout << "Взяли значение " << temp << endl;
   }
-  cout << "Нажмите любую клавишу" << endl;
   return 0;
 }
