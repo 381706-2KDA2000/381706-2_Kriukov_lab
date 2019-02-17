@@ -13,7 +13,7 @@ protected: // поля
   int memSize;
 public:
   TStack(int Size = 32);
-  ~TStack();
+  virtual ~TStack();
   int IsEmpty(); // контроль пустоты
   int GetSize();
   int GetCount();// число элементов в стеке
@@ -87,7 +87,7 @@ ValType TStack<ValType>::Get()
 template <class ValType>
 void TStack<ValType>::Print() { // печать значений стека
   for (int i = 0; i< top + 1; i++)
-    std::cout << mem[i];
+    std::cout << mem[i] << ' ';
   std::cout << std::endl;
 }
 

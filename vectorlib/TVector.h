@@ -114,10 +114,10 @@ int TVector<ValType>::operator==(const TVector & v)
 {
   if (v.size == size)
   {
-    int res = 0;
+    int res = 1;
     for (int i = 0; i < size; i++)
-      res |= (pVector[i] ^ v.pVector[i]);
-    return (res == 0);
+      res *= (pVector[i] == v.pVector[i]);
+    return (res == 1);
   }
   return 0;
 }

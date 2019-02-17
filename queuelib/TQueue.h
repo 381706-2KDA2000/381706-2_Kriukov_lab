@@ -26,12 +26,9 @@ ValType TQueue<ValType>::Get()
   ValType temp;
   if (this->IsEmpty() == 1)
     throw TExeption(DataEmpty);
-  else
-  {
-    temp = this->mem[li];
-    li = GetNextIndex(li);
-    this->top--;
-  }
+  temp = this->mem[li];
+  li = GetNextIndex(li);
+  this->top--;
   return temp;
 }
 

@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
   srand(time(0));
   int ms = 10, ns, code, temp, val = 0;
   cout << "Тестирование системы N стеков" << endl;
-  while (CurrCount != 99)
+  while (CurrCount != 100)
   {
     val++;
     code = rand() % 4; // операция
@@ -30,12 +30,10 @@ int main(int argc, char* argv[])
       CurrCount--;
       temp = mst.Get(ns);
     }
-    if (val % 1 == 0)
-    {
-      mst.Print();
-      cout << "Циклов - " << val << ", Перепаковок - " << mst.GetRelocationCount() << endl;
-      cout << "На данный момент в мультистеке:" << CurrCount << endl;
-    }
+    mst.Print();
+    cout << "Циклов - " << val << ", Перепаковок - " << mst.GetRelocationCount() << endl;
+    cout << "На данный момент в мультистеке:" << CurrCount << endl;
+
   }
   return 0;
 }

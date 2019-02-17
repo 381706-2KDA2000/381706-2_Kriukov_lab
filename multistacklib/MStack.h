@@ -8,6 +8,7 @@ class MStack : public TStack<ValType>
 {
 public:
   MStack(ValType* ind = NULL, int Size = 0);
+  ~MStack();
   void SetMem(ValType* ind, int Size);
 };
 
@@ -17,6 +18,12 @@ MStack<ValType>::MStack(ValType * ind, int Size)
   this->mem = ind;
   this->top = -1;
   this->memSize = Size;
+}
+
+template<class ValType>
+MStack<ValType>::~MStack()
+{
+  this->mem = NULL;
 }
 
 

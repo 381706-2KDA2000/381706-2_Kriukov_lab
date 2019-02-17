@@ -60,7 +60,7 @@ TDatList<ValType>::TDatList(const TDatList & dl)
   TDatLink<ValType>* pTemp = dl.pFirst;
   pFirst = new TDatLink<ValType>(pTemp->GetDatValue(), NULL);
   TDatLink<ValType>* TmpLast = pFirst;
-  TDatLink<ValType>* TmpCurr;
+  TDatLink<ValType>* TmpCurr = NULL;
   for (int i = 1; i < dl.listLen; i++)
   {
     pTemp = pTemp->GetNextLink();
