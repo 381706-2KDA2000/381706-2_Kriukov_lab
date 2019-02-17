@@ -3,6 +3,7 @@
 #include <TExeption.h>
 #include<iostream>
 #include<cstdlib>
+#include<cstring>
 #include<TListStack.h>
 #include<TStack.h>
 

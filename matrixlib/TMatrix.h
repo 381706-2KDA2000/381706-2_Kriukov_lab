@@ -74,7 +74,7 @@ ValType TMatrix<ValType>::det()
 {
   ValType res = 1;
   for (int i = 0; i < this->size; i++)
-    res *= pVector[i][i];
+    res *= this->pVector[i][i];
   return res;
 }
 
@@ -83,7 +83,7 @@ TMatrix<ValType> TMatrix<ValType>::invert()
 {
   TMatrix<ValType> res(this->size);
   for (int i = 0; i < this->size; i++)
-    res[i][i] = 1/pVector[i][i];
+    res[i][i] = 1/ (this->pVector[i][i]);
   for (int i = 0; i < this->size; i++)
     for (int j = i + 1; j < this->size; j++)
     {
