@@ -12,12 +12,14 @@ int main(int argc, char* argv[])
   int CurrCount = 1;
   TMultiStack<int> mst(100, 10);
   mst.Put(0, 10);
-  srand(time(0));
+  srand(1);
   int ms = 10, ns, code, temp, val = 0;
   cout << "“естирование системы N стеков" << endl;
   while (CurrCount != 100)
   {
     val++;
+    if (val == 141)
+      int a = 1;
     code = rand() % 4; // операци€
     ns = rand() % ms; // номер стека
     if (code < 3)

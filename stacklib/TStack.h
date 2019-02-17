@@ -65,6 +65,7 @@ int TStack<ValType>::GetCount()
 template<class ValType>
 int TStack<ValType>::IsFull()
 {
+
   return top == (memSize - 1);
 }
 

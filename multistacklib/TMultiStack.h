@@ -38,7 +38,7 @@ void TMultiStack<ValType>::StackRelocation(int nst)
 {
   int l;
   StackTops[nst] += 1;
-  int temp = GetFreeMemSize();
+  int temp = GetFreeMemSize() - 1;
   if (temp > -1)
   {
     pStackMem[0] = &StackMem[0];
@@ -56,7 +56,12 @@ void TMultiStack<ValType>::StackRelocation(int nst)
     }
     else if (pStackMem[i] > StackInd[i])
     {
-      for (l = i; pStackMem[l + 1] > StackInd[l + 1]; l++);
+      for (l = i; pStackMem[l + 1] > StackInd[l + 1]; l++)
+        if (l == StackCount - 1)
+        {
+          //l++;
+          break;
+        }
       for (int k = l; k >= i; k--)
       {
         for (int j = (StackTops[k] - 1); j >= 0; j--)
@@ -68,9 +73,10 @@ void TMultiStack<ValType>::StackRelocation(int nst)
     }
     else
     {
-      pStack[i]->SetMem(pStackMem[i], pStackMem[i + 1] - pStackMem[i]);
+      if (i != StackCount - 1)
+        pStack[i]->SetMem(pStackMem[i], pStackMem[i + 1] - pStackMem[i]);
     }
-  pStack[StackCount - 1]->SetMem(pStackMem[StackCount - 1], CurrentCount + pStackMem[0] - pStackMem[StackCount - 2]);
+  pStack[StackCount - 1]->SetMem(pStackMem[StackCount - 1], MemSize - (pStackMem[StackCount - 1] - pStackMem[0]));
   StackTops[nst] -= 1;
   RelocationCount++;
 }
