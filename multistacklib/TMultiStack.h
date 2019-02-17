@@ -59,7 +59,6 @@ void TMultiStack<ValType>::StackRelocation(int nst)
       for (l = i; pStackMem[l + 1] > StackInd[l + 1]; l++)
         if (l == StackCount - 1)
         {
-          //l++;
           break;
         }
       for (int k = l; k >= i; k--)

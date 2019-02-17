@@ -18,8 +18,6 @@ int main(int argc, char* argv[])
   while (CurrCount != 100)
   {
     val++;
-    if (val == 141)
-      int a = 1;
     code = rand() % 4; // операция
     ns = rand() % ms; // номер стека
     if (code < 3)

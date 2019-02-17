@@ -87,7 +87,7 @@ TPolinom TPolinom::operator*(const TPolinom & q)
   TDatLink<TMonom>* tmp2 = q.pFirst;
   for (int i = 0; i < this->listLen - 1; i++)
   {
-    for (int i = 0; i < q.listLen - 1; i++)
+    for (int j = 0; j < q.listLen - 1; j++)
     {
       res.InsLast(tmp1->GetDatValue() * tmp2->GetDatValue());
       tmp1 = tmp1->GetNextLink();
