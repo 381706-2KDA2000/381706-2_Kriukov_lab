@@ -8,7 +8,7 @@ class MStack : public TStack<ValType>
 {
 public:
   MStack(ValType* ind = NULL, int Size = 0);
-  ~MStack() override;
+  ~MStack();
   void SetMem(ValType* ind, int Size);
 };
 
