@@ -46,7 +46,7 @@ TPolinom TPolinom::operator+(const TPolinom & q)
   return res;
 }
 
-TPolinom TPolinom::operator-(TPolinom & q)
+TPolinom TPolinom::operator-(const TPolinom & q)
 {
   if (this->listLen != q.listLen)
     throw TExeption(DataErr);
@@ -80,7 +80,7 @@ TPolinom TPolinom::operator-(TPolinom & q)
   return res;
 }
 
-TPolinom TPolinom::operator*(TPolinom & q)
+TPolinom TPolinom::operator*(const TPolinom & q)
 {
   TPolinom res;
   TDatLink<TMonom>* tmp1 = pFirst;
@@ -97,15 +97,15 @@ TPolinom TPolinom::operator*(TPolinom & q)
   return res;
 }
 
-TPolinom & TPolinom::operator+=(TMonom & m)
+TPolinom & TPolinom::operator+=(const TMonom & m)
 {
   for (int i = 0; i < listLen; i++)
   {
-    TMonom tmp = GetDatValue(i);
+    TMonom  tmp = GetDatValue(i);
     if (tmp == m)
     {
       Del(i);
-      InsTo(i, m + tmp);
+      InsTo(i, tmp + m);
       return *this;
     }
     else if (tmp < m)
@@ -123,7 +123,7 @@ TMonom & TPolinom::operator[](int pos) const
   return GetDatValue(pos);
 }
 
-TPolinom & TPolinom::operator=(TPolinom & q)
+TPolinom & TPolinom::operator=(const TPolinom & q)
 {
   if (this != &q)
   {

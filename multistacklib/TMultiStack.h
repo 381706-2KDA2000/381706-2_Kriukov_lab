@@ -44,9 +44,8 @@ void TMultiStack<ValType>::StackRelocation(int nst)
     pStackMem[0] = &StackMem[0];
     for (int i = 1; i < StackCount; i++)
       pStackMem[i] = pStackMem[i - 1] + StackTops[i - 1] + temp / StackCount;
-    pStackMem[StackCount - 1] += temp % StackCount;
+//    pStackMem[StackCount - 1] += temp % StackCount;
   }
-  StackTops[nst] -= 1;
   for (int i = 0; i < StackCount; i++)
     if (pStackMem[i] < StackInd[i])
     {
@@ -70,6 +69,8 @@ void TMultiStack<ValType>::StackRelocation(int nst)
     {
       pStack[i]->SetMem(pStackMem[i], pStackMem[i + 1] - pStackMem[i]);
     }
+  pStack[StackCount - 1]->SetMem(pStackMem[StackCount - 1], CurrentCount + pStackMem[0] - pStackMem[8]);
+  StackTops[nst] -= 1;
   RelocationCount++;
 }
 
@@ -148,9 +149,11 @@ TMultiStack<ValType>::TMultiStack(TMultiStack & ms)
 template<class ValType>
 TMultiStack<ValType>::~TMultiStack()
 {
+  delete[]StackMem;
   for (int i = 0; i < StackCount; i++)
     delete pStack[i];
   delete[]pStack;
+  delete[]pStackMem;
   delete[]StackTops;
   delete[]StackInd;
 }

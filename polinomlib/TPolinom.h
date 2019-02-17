@@ -10,11 +10,11 @@ public:
   TPolinom(const TPolinom &q); // конструктор копирования
   TPolinom(const TDatList<TMonom> &q); // конструктор приведения типа
   TPolinom operator+(const TPolinom &q); // сложение полиномов
-  TPolinom operator-(TPolinom &q); // вычитание полиномов
-  TPolinom operator*(TPolinom &q); // умножение полиномов
-  TPolinom & operator+=(TMonom &m); // добавить моном
+  TPolinom operator-(const TPolinom &q); // вычитание полиномов
+  TPolinom operator*(const TPolinom &q); // умножение полиномов
+  TPolinom & operator+=(const TMonom &m); // добавить моном
   TMonom & operator[](int) const;
-  TPolinom & operator=(TPolinom &q); // присваивание
+  TPolinom & operator=(const TPolinom &q); // присваивание
   friend ostream& operator<<(ostream &os, TPolinom &q);
 };
 #endif
