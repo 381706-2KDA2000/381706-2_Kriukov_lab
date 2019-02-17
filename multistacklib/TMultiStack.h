@@ -148,10 +148,8 @@ TMultiStack<ValType>::TMultiStack(TMultiStack & ms)
 }
 
 template<class ValType>
-TMultiStack<ValType>::~TMultiStack()
+TMultiStack<ValType>::~TMultiStack<ValType>()
 {
-  for (int i = 0; i < MemSize + 3; i++)
-    StackMem[i];
   delete[]StackMem;
   for (int i = 0; i < StackCount; i++)
     delete pStack[i];
