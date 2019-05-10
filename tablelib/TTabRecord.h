@@ -29,8 +29,8 @@ public:
   bool operator > (const TTabRecord& tr);
   bool operator < (const TTabRecord& tr);
   TTabRecord& operator = (const TTabRecord& tr);
-  template <class ValType> friend class TScanTable;
-  template <class ValType> friend class TSortTable;
+  friend class TScanTable<ValType>;
+  friend class TSortTable<ValType>;
 };
 
 template<class ValType>

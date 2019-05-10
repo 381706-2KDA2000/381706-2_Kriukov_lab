@@ -5,6 +5,8 @@
 #include <TTabRecord.h>
 #include <TExeption.h>
 
+template <class ValType> class TSortTable;
+
 using namespace std;
 
 template<class ValType>
@@ -36,7 +38,7 @@ public:
     os << " val :" << *q.pRecs[q.dataCount - 1]->GetVal();
     return os;
   }
-  template <class ValType> friend class TSortTable;
+  friend class TSortTable<ValType>;
 };
 
 template<class ValType>

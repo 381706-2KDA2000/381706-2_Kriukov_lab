@@ -5,6 +5,7 @@
 #include <TExeption.h>
 #include <TScanTable.h>
 
+
 enum SortType
 {QUICK, MERGE, INSERT};
 

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <TExeption.h>
+#include <string.h>
 
 using namespace std;
 
