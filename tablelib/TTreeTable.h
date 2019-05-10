@@ -25,6 +25,7 @@ public:
   TTreeNode<ValType>* Search(TKey k);
   ValType* operator[] (TKey k);
   void Print(); // выводит не в том порядке
+  void Print(TTreeNode<ValType>* t);
 };
 
 template<class ValType>
@@ -111,22 +112,18 @@ ValType * TTreeTable<ValType>::operator[](TKey k)
 template<class ValType>
 void TTreeTable<ValType>::Print()
 {
-  TListStack<TTreeNode<ValType>*> st;
-  if (pRoot != NULL)
+  Print(pRoot);
+}
+
+template<class ValType>
+void TTreeTable<ValType>::Print(TTreeNode<ValType>* t)
+{
+  if (t != NULL)
   {
-    TTreeNode<ValType> *pOut = pRoot;
-    st.Put(pOut);
-    while (!st.IsEmpty())
-    {
-      pOut = st.Get();
-      if (pOut->pLeft)
-        st.Put(pOut->pLeft);
-      if (pOut->pRight)
-        st.Put(pOut->pRight);
-      std::cout << "Key :" << pOut->GetKey();
-      std::cout << " val :" << pOut->GetVal();
-      std::cout << endl;
-    }
+    Print(t->pLeft);
+    std::cout << "Key :" << t->GetKey();
+    std::cout << " val :" << t->GetVal();
+    Print(t->pRight);
   }
 }
 

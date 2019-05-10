@@ -2,14 +2,23 @@
 
 TKey::TKey(char * k)
 {
-  key = k;
   len = strlen(k);
+  key = new char[len + 1];
+  strcpy(key, k);
+}
+
+TKey::TKey(TKey & k)
+{
+  len = strlen(k.key);
+  key = new char[k.len + 1];
+  strcpy(key, k.key);
 }
 
 void TKey::SetKey(char * k)
 {
-  key = k;
   len = strlen(k);
+  key = new char[len + 1];
+  strcpy(key, k);
 }
 
 char * TKey::GetKey()
@@ -19,15 +28,19 @@ char * TKey::GetKey()
 
 TKey& TKey::operator=(const TKey & tr)
 {
-  key = tr.key;
-  len = tr.len;
+  len = strlen(tr.key);
+  key = new char[len + 1];
+  strcpy(key, tr.key);
   return *this;
 }
 
 TKey& TKey::operator=(char * str)
 {
-  key = str;
+  if(len != 0)
+    delete key;
   len = strlen(str);
+  key = new char[len + 1];
+  strcpy(key, str);
   return *this;
 }
 
@@ -75,6 +88,12 @@ bool TKey::operator<(const TKey & tr)
   if (len > tr.len)
     return true;
   return false;
+}
+
+TKey::~TKey()
+{
+  if (len != 0)
+    delete key;
 }
 
 ostream & operator<<(ostream & os, TKey & q)

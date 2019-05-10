@@ -17,9 +17,10 @@ protected:
   ValType* value;
   bool toDel;//  нужно ли удалить *value после удаления записи
 public:
-  TTabRecord(TKey k = "", ValType* val = NULL);
-  TTabRecord(char*, ValType* val = NULL);
+  TTabRecord(TKey k = "", ValType* val = NULL, bool del = false);
+  TTabRecord(char*, ValType* val = NULL, bool del = false);
   TTabRecord(TTabRecord<ValType> &tr);
+  void SetToDel(bool del);
   ~TTabRecord();
   void SetKey(TKey k);
   void SetValue(ValType* val);
@@ -34,19 +35,19 @@ public:
 };
 
 template<class ValType>
-TTabRecord<ValType>::TTabRecord(TKey k, ValType* val)
+TTabRecord<ValType>::TTabRecord(TKey k, ValType* val, bool del)
 {
   key = k;
   value = val;
-  toDel = 0;
+  toDel = del;
 }
 
 template<class ValType>
-TTabRecord<ValType>::TTabRecord(char * ch, ValType * val)
+TTabRecord<ValType>::TTabRecord(char * ch, ValType * val, bool del)
 {
   key = ch;
   value = val;
-  toDel = 0;
+  toDel = del;
 }
 
 template<class ValType>
@@ -56,6 +57,12 @@ TTabRecord<ValType>::TTabRecord(TTabRecord<ValType>& tr)
   key = tr.key;
   value = new ValType();
   *value = *tr.value;
+}
+
+template<class ValType>
+void TTabRecord<ValType>::SetToDel(bool del)
+{
+  toDel = del;
 }
 
 template<class ValType>

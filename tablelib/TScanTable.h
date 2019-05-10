@@ -28,6 +28,8 @@ public:
   ValType* operator[] (TKey k);
   friend ostream& operator<<(ostream &os, const TScanTable &q)
   {
+    if (q.dataCount == 0)
+      return os;
     for (int i = 0; i < q.dataCount - 1; i++)
     {
       os << "Key :" << q.pRecs[i]->GetKey();
@@ -63,8 +65,6 @@ TScanTable<ValType>::TScanTable(TScanTable<ValType> &st)
   pRecs = new TTabRecord<ValType>*[tabSize];
   for (int i = 0; i < dataCount; i++)
     pRecs[i] = new TTabRecord<ValType>(*pRecs[i]);
-  for (int i = dataCount; i < tabSize; i++)
-    pRecs[i] = NULL;
 }
 
 template<class ValType>
@@ -105,7 +105,7 @@ void TScanTable<ValType>::Delete(TKey k)
 }
 
 template<class ValType>
-inline int TScanTable<ValType>::GetTabSize()
+int TScanTable<ValType>::GetTabSize()
 {
   return tabSize;
 }

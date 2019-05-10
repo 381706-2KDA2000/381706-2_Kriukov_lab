@@ -2,34 +2,48 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
+#include <TScanTable.h>
 
 using namespace std;
 
 int main()
 {
-  TTree root;
-  root.level = 0;
-  root.nextLevel = new TTree(0);
-  TTree* string = root.nextLevel;
-  string->level = 1;
-  string->nextLevel = new TTree(0);
-  TTree* word = string->nextLevel;
-  word->level = 2;
-  word->nextLevel = new TTree('p');
-  TTree* symbol = word->nextLevel;
-  symbol->sameLevel = new TTree('a');
-  symbol->sameLevel->sameLevel =
-    new TTree('r');
-  symbol->sameLevel->sameLevel->sameLevel
-    = new TTree('a');
-  symbol->sameLevel->sameLevel->sameLevel->sameLevel
-    = new TTree(' ');
+  TScanTable<int> table(10);
+  bool flag = true;
+  int cmd = 0;
+  int * val;
+  std::cout << "Press Enter to Start";
+  while (flag)
+  {
+    char buff[256];
+    std::cout << endl;
+    std::cout << "0 - exit" << endl;
+    std::cout << "1 - add record" << endl;
+    std::cout << "2 - delete record" << endl;
+    std::cout << "3 - find record" << endl;
+    scanf_s("%d", &cmd);
+    switch (cmd)
+    {
+    case 0:
+      flag = false;
+      break;
+    case 1:
+      val = new int;
+      scanf_s("%d", val);
+      cin >> buff;
+      table.Add(new TTabRecord<int>(buff, val, true));
+      break;
+    case 2:
+      cin >> buff;
+      table.Delete(buff);
+      break;
+    case 3:
+      cin >> buff;
+      table.Search(buff);
+      break;
+    }
+    std::cout << table;
+  }
 
-  word->sameLevel = new TTree(0);
-  TTree* word2 = word->sameLevel;
-  word2->level = 2;
-  word2->nextLevel = new TTree('v');
-  //std::cout << root.d << std::endl;
-  root.print2();
   return 0;
 }

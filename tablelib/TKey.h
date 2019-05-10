@@ -14,6 +14,7 @@ protected:
   int len;
 public:
   TKey(char* k = "");
+  TKey(TKey &k);
   void SetKey(char* k);
   char* GetKey();
   TKey& operator = (const TKey& tr);
@@ -22,6 +23,7 @@ public:
   bool operator > (const TKey& tr);
   bool operator < (const TKey& tr);
   friend ostream& operator<<(ostream &os, TKey &q);
+  ~TKey();
 };
 
 #endif
