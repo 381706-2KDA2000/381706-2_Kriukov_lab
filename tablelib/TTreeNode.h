@@ -5,6 +5,8 @@
 #include <TTabRecord.h>
 #include <TExeption.h>
 
+template <class ValType> class TTreeTable;
+
 using namespace std;
 
 

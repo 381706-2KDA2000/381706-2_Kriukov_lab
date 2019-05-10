@@ -56,68 +56,6 @@ TChartPlex::TChartPlex(TChartPoint * l, TChartPoint * r)
     right = new TChartPoint(*r);
 }
 
-/*
-TChartPlex & TChartPlex::operator+=(TChartLine & l)
-{
-if (left == NULL && right == NULL)
-{
-left = l.GetA();
-right = l.GetB();
-}
-else
-{
-TListStack<TChartPoint*> st;
-TListStack<TChartPlex*> parentSt;
-st.Put(left);
-st.Put(right);
-parentSt.Put(this);
-parentSt.Put(this);
-bool flag = true;
-while (flag)
-{
-TChartPoint* buff = st.Get();
-TChartPlex* parentBuff = parentSt.Get();
-if (buff != l.GetA() && buff != l.GetB())
-{
-TChartPlex* pl = dynamic_cast<TChartPlex*>(buff);
-if (pl != 0)
-{
-st.Put(pl->GetLeft());
-st.Put(pl->GetRight());
-parentSt.Put(pl);
-parentSt.Put(pl);
-}
-}
-else if (buff == l.GetA())
-{
-flag = false;
-if (buff == parentBuff->left)
-{
-parentBuff->left = new TChartPlex(l.GetB(), l.GetA());
-}
-else
-{
-parentBuff->right = new TChartPlex(l.GetB(), l.GetA());
-}
-}
-else
-{
-flag = false;
-if (buff == parentBuff->left)
-{
-parentBuff->left = new TChartPlex(l.GetA(), l.GetB());
-}
-else
-{
-parentBuff->right = new TChartPlex(l.GetA(), l.GetB());
-}
-}
-}
-}
-return *this;
-}
-*/
-
 TChartPlex & TChartPlex::operator+=(TChartLine & l)
 {
   if (left == NULL && right == NULL)

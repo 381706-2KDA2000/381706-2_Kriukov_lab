@@ -4,7 +4,10 @@
 #include <iostream>
 #include <TExeption.h>
 #include <TKey.h>
-//#include <string>
+#include <string.h>
+
+template <class ValType> class TScanTable;
+template <class ValType> class TSortTable;
 
 template<class ValType>
 class TTabRecord
@@ -52,7 +55,7 @@ TTabRecord<ValType>::TTabRecord(TTabRecord<ValType>& tr)
   toDel = 1;
   key = tr.key;
   value = new ValType();
-  *value = *tr.value
+  *value = *tr.value;
 }
 
 template<class ValType>

@@ -27,7 +27,6 @@ TEST(TTreeTable, can_add_multy_records_to_tree_table)
   l.Add(rec1);
   l.Add(rec2);
   ASSERT_NO_THROW(l.Add(rec3));
-  l.Print();
 }
 
 TEST(TTreeTable, can_delete_record_in_tree_table)

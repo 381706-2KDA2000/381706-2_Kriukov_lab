@@ -9,8 +9,8 @@ TChartLine::TChartLine(TChartPoint * pA, TChartPoint * pB)
 
 TChartLine::TChartLine(TChartLine & cp)
 {
-  a = &(TChartPoint(*cp.a));
-  b = &(TChartPoint(*cp.b));
+  a = cp.a;
+  b = cp.b;
 }
 
 void TChartLine::Show()
