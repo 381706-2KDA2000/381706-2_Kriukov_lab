@@ -28,7 +28,7 @@ public:
 };
 
 template<class ValType>
-TTreeNode<ValType>::TTreeNode(TKey k, ValType * val, TTreeNode<ValType>* left, TTreeNode<ValType>* right) :TTabRecord(k, val)
+TTreeNode<ValType>::TTreeNode(TKey k, ValType * val, TTreeNode<ValType>* left, TTreeNode<ValType>* right) :TTabRecord<ValType>(k, val)
 {
   pLeft = left;
   pRight = right;
