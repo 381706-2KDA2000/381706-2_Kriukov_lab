@@ -24,7 +24,7 @@ public:
   ~TTreeNode();
   TTreeNode* GetLeft();
   TTreeNode* GetRight();
-  template <class ValType> friend class TTreeTable;
+  friend class TTreeTable<ValType>;
 };
 
 template<class ValType>
