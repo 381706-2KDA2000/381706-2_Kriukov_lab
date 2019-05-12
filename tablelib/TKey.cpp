@@ -96,7 +96,7 @@ TKey::~TKey()
     delete key;
 }
 
-ostream & operator<<(ostream & os, TKey & q)
+ostream & operator<<(ostream & os, const TKey & q)
 {
   os << q.key;
   return os;

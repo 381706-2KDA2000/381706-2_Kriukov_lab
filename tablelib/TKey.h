@@ -22,7 +22,7 @@ public:
   bool operator == (const TKey& tr);
   bool operator > (const TKey& tr);
   bool operator < (const TKey& tr);
-  friend ostream& operator<<(ostream &os, TKey &q);
+  friend ostream& operator<<(ostream &os, const TKey &q);
   ~TKey();
 };
 
