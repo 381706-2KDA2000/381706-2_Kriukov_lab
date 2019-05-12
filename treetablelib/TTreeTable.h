@@ -24,7 +24,7 @@ public:
   int GetDataCount();
   TTreeNode<ValType>* Search(TKey k);
   ValType* operator[] (TKey k);
-  void Print(); // выводит не в том порядке
+  void Print();
   void Print(TTreeNode<ValType>* t);
 };
 
@@ -122,7 +122,7 @@ void TTreeTable<ValType>::Print(TTreeNode<ValType>* t)
   {
     Print(t->pLeft);
     std::cout << "Key :" << t->GetKey();
-    std::cout << " val :" << t->GetVal();
+    std::cout << " val :" << *t->GetVal();
     Print(t->pRight);
   }
 }
