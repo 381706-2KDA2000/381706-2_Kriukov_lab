@@ -26,7 +26,8 @@ int main()
     std::cout << "5 - delete next" << endl;
     std::cout << "6 - delete down" << endl;
     std::cout << "7 - reset" << endl;
-    scanf_s("%d", &cmd);
+//   scanf_s("%d", &cmd);
+    cin >> cmd;
     switch (cmd)
     {
     case 0:
