@@ -127,7 +127,7 @@ void TSortTable<ValType>::InsertSort(TTabRecord<ValType>** nRecs, int dC)
     pR = nRecs[i];
     for (int j = i - 1; j > -1; j--)
     {
-      if (*nRect[i] > *pR)
+      if (*nRecs[i] > *pR)
         nRecs[j + 1] = nRecs[j];
       else
         break;

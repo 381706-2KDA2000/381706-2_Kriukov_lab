@@ -6,6 +6,8 @@
 #include <TExeption.h>
 
 template <class ValType> class TTreeTable;
+template <class ValType> class TScanTable;
+template <class ValType> class TSortTable;
 
 using namespace std;
 
@@ -18,12 +20,19 @@ private:
   TTreeNode<ValType>* pLeft;
   TTreeNode<ValType>* pRight;
 public:
-  TTreeNode(TKey k = "", ValType* val = NULL, TTreeNode<ValType>*left = NULL, TTreeNode<ValType>*right = NULL) :TTabRecord(k, val) { pLeft = left; pRight = right;}
+  TTreeNode(TKey k = "", ValType* val = NULL, TTreeNode<ValType>*left = NULL, TTreeNode<ValType>*right = NULL);
   ~TTreeNode();
   TTreeNode* GetLeft();
   TTreeNode* GetRight();
   template <class ValType> friend class TTreeTable;
 };
+
+template<class ValType>
+TTreeNode<ValType>::TTreeNode(TKey k, ValType * val, TTreeNode<ValType>* left, TTreeNode<ValType>* right) :TTabRecord(k, val)
+{
+  pLeft = left;
+  pRight = right;
+}
 
 template<class ValType>
 TTreeNode<ValType>::~TTreeNode()
