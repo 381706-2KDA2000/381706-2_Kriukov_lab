@@ -21,7 +21,7 @@ int main()
     std::cout << "1 - add record" << endl;
     std::cout << "2 - delete record" << endl;
     std::cout << "3 - find record" << endl;
-    scanf_s("%d", &cmd);
+    cin >> cmd;
     switch (cmd)
     {
     case 0:
@@ -29,17 +29,17 @@ int main()
       break;
     case 1:
       val = new int;
-      scanf_s("%d", val);
+      cin >> *val;
       cin >> buff;
       table.Add(new TTabRecord<int>(buff, val, true));
       break;
     case 2:
       cin >> buff;
-      table.Delete(buff);
+      table.Delete((TKey)buff);
       break;
     case 3:
       cin >> buff;
-      table.Search(buff);
+      table.Search((TKey)buff);
       break;
     }
     std::cout << table;
