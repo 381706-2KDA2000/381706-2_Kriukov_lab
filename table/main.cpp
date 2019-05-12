@@ -10,6 +10,7 @@ int main()
 {
   TScanTable<int> table(10);
   bool flag = true;
+  TKey k;
   int cmd = 0;
   int * val;
   std::cout << "Press Enter to Start";
@@ -35,11 +36,13 @@ int main()
       break;
     case 2:
       cin >> buff;
-      table.Delete((TKey)buff);
+      k = buff;
+      table.Delete(k);
       break;
     case 3:
       cin >> buff;
-      table.Search((TKey)buff);
+      k = buff;
+      table.Search(k);
       break;
     }
     std::cout << table;
