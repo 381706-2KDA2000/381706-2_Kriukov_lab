@@ -7,7 +7,7 @@ TKey::TKey(char * k)
   strcpy(key, k);
 }
 
-TKey::TKey(TKey & k)
+TKey::TKey(const TKey & k)
 {
   len = strlen(k.key);
   key = new char[k.len + 1];
@@ -34,7 +34,7 @@ TKey& TKey::operator=(const TKey & tr)
   return *this;
 }
 
-TKey& TKey::operator=(char * str)
+TKey& TKey::operator=(const char * str)
 {
   if(len != 0)
     delete key;

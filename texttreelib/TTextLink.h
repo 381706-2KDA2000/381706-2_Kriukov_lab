@@ -3,6 +3,7 @@
 #include <TExeption.h>
 #include <TListStack.h>
 #include <iostream>
+#include <string.h>
 
 class TTextLink;
 class TText;

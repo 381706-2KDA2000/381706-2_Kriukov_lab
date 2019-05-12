@@ -14,11 +14,11 @@ protected:
   int len;
 public:
   TKey(char* k = "");
-  TKey(TKey &k);
+  TKey(const TKey &k);
   void SetKey(char* k);
   char* GetKey();
   TKey& operator = (const TKey& tr);
-  TKey& operator = (char* str);
+  TKey& operator = (const char* str);
   bool operator == (const TKey& tr);
   bool operator > (const TKey& tr);
   bool operator < (const TKey& tr);
