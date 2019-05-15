@@ -60,7 +60,7 @@ void TSortTable<ValType>::MergeSort(TTabRecord<ValType>** nRecs, int dC)
   TTabRecord<ValType>** pData = nRecs;
   TTabRecord<ValType>** pBuff = new TTabRecord<ValType>*[dC];
   TTabRecord<ValType>** pTemp = pBuff;
-  MeregSorter(pData, pBuff, dC);
+  MergeSorter(pData, pBuff, dC);
   if (pData == pTemp)
     for (int i = 0; i < dC; i++)
       pBuff[i] = pData[i];
@@ -116,6 +116,9 @@ void TSortTable<ValType>::MergeData(TTabRecord<ValType>**& pData, TTabRecord<Val
       k++;
     }
   }
+  TTabRecord<ValType>** pTemp = pData;
+  pData = pBuff;
+  pBuff = pTemp;
 }
 
 template<class ValType>
@@ -125,7 +128,7 @@ void TSortTable<ValType>::InsertSort(TTabRecord<ValType>** nRecs, int dC)
   for (int i = 1, j; i < dC; i++)
   {
     pR = nRecs[i];
-    for (int j = i - 1; j > -1; j--)
+    for (j = i - 1; j > -1; j--)
     {
       if (*nRecs[i] > *pR)
         nRecs[j + 1] = nRecs[j];
@@ -158,11 +161,11 @@ void TSortTable<ValType>::QuickSplit(TTabRecord<ValType>** pData, int size, int 
   TTabRecord<ValType>* pTemp;
   int i1 = 1;
   int i2 = size - 1;
-  while (i1 < i2)
+  while (i1 <= i2)
   {
-    while ((i1 < size) && !(pData[i1]->key > pPivot->key))
+    while ((i1 < size) && !(pData[i1]->key < pPivot->key))
       i1++;
-    while (pData[i1]->key > pPivot->key)
+    while (pData[i2]->key < pPivot->key)
       i2--;
     if (i1 < i2)
     {
@@ -170,10 +173,10 @@ void TSortTable<ValType>::QuickSplit(TTabRecord<ValType>** pData, int size, int 
       pData[i1] = pData[i2];
       pData[i2] = pTemp;
     }
-    pData[0] = pData[i2];
-    pData[i2] = pPivot;
-    pPivot = i2;
   }
+  pData[0] = pData[i2];
+  pData[i2] = pPivot;
+  pivot = i2;  
 }
 
 template<class ValType>
@@ -241,11 +244,11 @@ TSortTable<ValType> & TSortTable<ValType>::operator=(const TScanTable<ValType> &
       delete pRecs[i];
     delete[]pRecs;
   }
-  tabSize = st.GetTabSize();
-  dataCount = st.GetDataCount();
+  tabSize = st.tabSize;
+  dataCount = st.dataCount;
   pRecs = new TTabRecord<ValType>*[tabSize];
   for (int i = 0; i < dataCount; i++)
-    pRecs[i] = new TTabRecord<ValType>(*pRecs[i]);
+    pRecs[i] = new TTabRecord<ValType>(*st.pRecs[i]);
   for (int i = dataCount; i < tabSize; i++)
     pRecs[i] = NULL;
   SortData();
@@ -338,5 +341,4 @@ ValType * TSortTable<ValType>::operator[](TKey k)
   }
   return res->value;;
 }
-
 #endif
