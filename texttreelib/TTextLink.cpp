@@ -71,7 +71,10 @@ void TTextLink::InitMemory(int size)
   TTextLink::mem.pLast = TTextLink::mem.pFirst + size - 1;
   TTextLink* buff = mem.pFirst;
   for (int i = 0; i < size - 1; i++, buff++)
+  {
     buff->pNext = buff + 1;
+    buff->level = 0;
+  }
   buff->pNext = NULL;
 }
 
@@ -79,7 +82,7 @@ void TTextLink::MemCleaner(TText &txt)
 {
   for (txt.Reset(); !txt.IsEnded(); txt.GoNext())
     txt.GetLine()->level -=4;
-  TTextLink* pLink = mem.pFirst;
+  TTextLink* pLink = mem.pFree;
   for (; pLink != NULL; pLink = pLink->pNext)
     pLink->level -= 4;
   pLink = mem.pFirst;
