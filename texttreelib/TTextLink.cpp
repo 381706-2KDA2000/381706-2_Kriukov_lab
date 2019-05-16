@@ -82,15 +82,15 @@ void TTextLink::MemCleaner(TText &txt)
 {
   for (txt.Reset(); !txt.IsEnded(); txt.GoNext())
     txt.GetLine()->level -=4;
-  TTextLink* pLink = mem.pFree;
-  for (; pLink != NULL; pLink = pLink->pNext)
-    pLink->level -= 4;
-  pLink = mem.pFirst;
-  for (; pLink <= mem.pLast; pLink = pLink++)
-    if (pLink->level < 0)
-      pLink->level += 4;
-    else
-      delete pLink;
+  //TTextLink* pLink = mem.pFree;
+  //for (; pLink != NULL; pLink = pLink->pNext)
+  //  pLink->level -= 4;
+  //pLink = mem.pFirst;
+  //for (; pLink <= mem.pLast; pLink = pLink++)
+  //  if (pLink->level < 0)
+  //    pLink->level += 4;
+  //  else
+  //    delete pLink;
 }
 
 void * TTextLink::operator new(const size_t size)
