@@ -6,8 +6,8 @@ TTextMem TTextLink::mem;
 TTextLink::TTextLink(char * st)
 {
   level = 1;
-  pNext = 0;
-  pDown = 0;
+  pNext = NULL;
+  pDown = NULL;
   d = 0;
   if (st != NULL)
   {
@@ -86,7 +86,7 @@ void TTextLink::MemCleaner(TText &txt)
   for (; pLink != NULL; pLink = pLink->pNext)
     pLink->level -= 4;
   pLink = mem.pFirst;
-  for (; pLink->pNext != NULL; pLink = pLink++)
+  for (; pLink->pNext < mem.pLast; pLink = pLink++)
     if (pLink->level < 0)
       pLink->level += 4;
     else
