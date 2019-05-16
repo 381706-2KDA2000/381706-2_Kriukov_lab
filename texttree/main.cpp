@@ -13,6 +13,7 @@ int main()
   std::cout << "Press Enter to Start";
   while (flag)
   {
+    getchar();
     char buff[256];
     txt.Print();
     std::cout << endl;
