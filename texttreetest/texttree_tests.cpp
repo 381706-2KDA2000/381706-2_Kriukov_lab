@@ -88,7 +88,7 @@ TEST(TText, can_use_memory_cleaner)
   TTextLink* a;
   TText txt;
   txt.InsertDown("Gendaaaaaalf");
-  a->InitMemory(100);
+//  a->InitMemory(20);
   for (int i = 0; i < 10; i++)
   {
     a = new TTextLink(1);
