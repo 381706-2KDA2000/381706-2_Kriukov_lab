@@ -86,11 +86,11 @@ void TTextLink::MemCleaner(TText &txt)
   for (; pLink != NULL; pLink = pLink->pNext)
     pLink->level -= 4;
   pLink = mem.pFirst;
-  //for (; pLink <= mem.pLast; pLink = pLink++)
-  //  if (pLink->level < 0)
-  //    pLink->level += 4;
-  //  else
-  //    delete pLink;
+  for (; pLink <= mem.pLast; pLink++)
+    if (pLink->level < 0)
+      pLink->level += 4;
+    else
+      delete pLink;
 }
 
 void * TTextLink::operator new(const size_t size)
