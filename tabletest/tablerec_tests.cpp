@@ -22,6 +22,7 @@ TEST(TTabRecord, can_get_key)
 TEST(TTabRecord, can_set_value)
 {
   TTabRecord<int> r;
+  r.SetToDel(false);
   int v = 3;
   ASSERT_NO_THROW(r.SetValue(&v));
 }
@@ -31,6 +32,7 @@ TEST(TTabRecord, can_get_value)
   TTabRecord<int> r;
   int v = 3;
   r.SetValue(&v);
+  r.SetToDel(false);
   EXPECT_EQ(*r.GetVal(), 3);
 }
 
