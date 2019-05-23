@@ -133,7 +133,7 @@ ValType* TScanTable<ValType>::operator[](TKey k)
   TTabRecord<ValType>* res = Search(k);
   if (res == NULL) 
   {
-    TTabRecord<ValType> *n = new TTabRecord<ValType>(k, NULL);
+    TTabRecord<ValType> *n = new TTabRecord<ValType>(k, NULL, true);
     Add(n);
     res = pRecs[dataCount - 1];
   }

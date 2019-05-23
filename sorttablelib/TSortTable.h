@@ -335,10 +335,10 @@ ValType * TSortTable<ValType>::operator[](TKey k)
   TTabRecord<ValType>* res = Search(k);
   if (res == NULL)
   {
-    TTabRecord<ValType>* n = new TTabRecord<ValType>(k, NULL);
+    TTabRecord<ValType>* n = new TTabRecord<ValType>(k, NULL, true);
     Add(n);
     return n->value;
   }
-  return res->value;;
+  return res->value;
 }
 #endif

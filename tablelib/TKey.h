@@ -16,12 +16,14 @@ public:
   TKey(char* k = "");
   TKey(const TKey &k);
   void SetKey(char* k);
+  int GetLen();
   char* GetKey();
   TKey& operator = (const TKey& tr);
   TKey& operator = (const char* str);
   bool operator == (const TKey& tr);
   bool operator > (const TKey& tr);
   bool operator < (const TKey& tr);
+  char operator [] (const int pos);
   friend ostream& operator<<(ostream &os, const TKey &q);
   ~TKey();
 };

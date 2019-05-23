@@ -38,6 +38,22 @@ TEST(TTreeTable, can_delete_record_in_tree_table)
   ASSERT_NO_THROW(l.Delete("k"));
 }
 
+TEST(TTreeTable, can_delete_record_in_full_tree_table)
+{
+  TTreeTable<int> l;
+  int v = 3;
+  l["d"];
+  l["c"];
+  l["f"];
+  l["e"];
+  l["h"];
+  l["ga"];
+  l["g"];
+  l["gb"];
+  l["j"];
+  ASSERT_NO_THROW(l.Delete("h"));
+}
+
 TEST(TTreeTable, can_search_record_in_tree_table)
 {
   TTreeTable<int> l;

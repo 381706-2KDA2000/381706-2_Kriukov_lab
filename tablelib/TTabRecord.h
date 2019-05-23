@@ -8,6 +8,8 @@
 
 template <class ValType> class TScanTable;
 template <class ValType> class TSortTable;
+template <class ValType> class THashTable;
+template <class ValType> class TListHash;
 
 template<class ValType>
 class TTabRecord
@@ -17,7 +19,7 @@ protected:
   ValType* value;
   bool toDel;//  нужно ли удалить *value после удаления записи
 public:
-  TTabRecord(TKey k = "", ValType* val = NULL, bool del = false);
+  TTabRecord(TKey k = "", ValType* val = NULL, bool del = true);
   TTabRecord(char*, ValType* val = NULL, bool del = false);
   TTabRecord(TTabRecord<ValType> &tr);
   void SetToDel(bool del);
@@ -32,6 +34,8 @@ public:
   TTabRecord& operator = (const TTabRecord& tr);
   friend class TScanTable<ValType>;
   friend class TSortTable<ValType>;
+  friend class THashTable<ValType>;
+  friend class TListHash<ValType>;
 };
 
 template<class ValType>
@@ -55,8 +59,13 @@ TTabRecord<ValType>::TTabRecord(TTabRecord<ValType>& tr)
 {
   toDel = 1;
   key = tr.key;
-  value = new ValType();
-  *value = *tr.value;
+  if (tr.value != NULL)
+  {
+    value = new ValType();
+    *value = *tr.value;
+  }
+  else
+    value = NULL;
 }
 
 template<class ValType>

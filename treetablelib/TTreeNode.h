@@ -20,7 +20,7 @@ private:
   TTreeNode<ValType>* pLeft;
   TTreeNode<ValType>* pRight;
 public:
-  TTreeNode(TKey k = "", ValType* val = NULL, TTreeNode<ValType>*left = NULL, TTreeNode<ValType>*right = NULL);
+  TTreeNode(TKey k = "", ValType* val = NULL, TTreeNode<ValType>*left = NULL, TTreeNode<ValType>*right = NULL, bool toDel = false);
   ~TTreeNode();
   TTreeNode* GetLeft();
   TTreeNode* GetRight();
@@ -28,7 +28,7 @@ public:
 };
 
 template<class ValType>
-TTreeNode<ValType>::TTreeNode(TKey k, ValType * val, TTreeNode<ValType>* left, TTreeNode<ValType>* right) :TTabRecord<ValType>(k, val)
+TTreeNode<ValType>::TTreeNode(TKey k, ValType * val, TTreeNode<ValType>* left, TTreeNode<ValType>* right, bool toDel) :TTabRecord<ValType>(k, val, toDel)
 {
   pLeft = left;
   pRight = right;

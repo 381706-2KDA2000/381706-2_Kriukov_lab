@@ -67,8 +67,34 @@ void TTreeTable<ValType>::Delete(TKey k)
 {
   if (!Search(k))
     throw TExeption(DataErr);
-  delete *ppRef;
-  *ppRef = NULL;
+  TTreeNode<ValType>* tmp = *ppRef;
+  TTreeNode<ValType>** buff = ppRef;
+  if (tmp->pLeft != NULL)
+  {
+    TTreeNode<ValType>* tmp3 = (*ppRef)->pRight;
+    TTreeNode<ValType>* tmp4;
+    TTreeNode<ValType>* buff = tmp->pLeft;
+    delete *ppRef;
+    *ppRef = buff;
+    tmp = *ppRef;
+    while ((tmp != NULL))
+    {
+      tmp4 = tmp->pRight;
+      tmp->pRight = tmp3;
+      tmp3 = tmp4;
+      tmp = tmp->pLeft;
+    }
+  }
+  else if (tmp->pRight != NULL)
+  {
+    **ppRef = *tmp->pRight;
+    delete *ppRef;
+  }
+  else
+  {
+    delete *ppRef;
+    *ppRef = NULL;
+  }
 }
 
 template<class ValType>

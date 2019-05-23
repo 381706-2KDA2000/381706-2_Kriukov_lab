@@ -21,6 +21,11 @@ void TKey::SetKey(char * k)
   strcpy(key, k);
 }
 
+int TKey::GetLen()
+{
+  return len;
+}
+
 char * TKey::GetKey()
 {
   return key;
@@ -28,9 +33,9 @@ char * TKey::GetKey()
 
 TKey& TKey::operator=(const TKey & tr)
 {
-  len = strlen(tr.key);
-  key = new char[len + 1];
-  strcpy(key, tr.key);
+    len = strlen(tr.key);
+    key = new char[len + 1];
+    strcpy(key, tr.key);
   return *this;
 }
 
@@ -88,6 +93,13 @@ bool TKey::operator<(const TKey & tr)
   if (len > tr.len)
     return true;
   return false;
+}
+
+char TKey::operator[](const int pos)
+{
+  if((pos < len) && (pos > 0))
+    return key[pos];
+  return -1;
 }
 
 TKey::~TKey()
