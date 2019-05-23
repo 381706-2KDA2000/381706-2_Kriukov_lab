@@ -18,5 +18,11 @@ script:
   - ./arrlisttest/arrlisttest
   - ./polinomtest/polinomtest
   - ./infixtopolishtest/infixtopolishtest
+  - ./tabletest/tabletest
+  - ./sorttabletest/sorttabletest
+  - ./treetabletest/treetabletest
+  - ./charttest/charttest
+  - ./texttreetest/texttreetest
+  - ./hashtabletest/hashtabletest
 notifications:
   email: false

@@ -8,7 +8,7 @@ class TQueue : public TStack<ValType>
 {
 protected:
   int li; // индекс первого элемента структуры
-  int GetNextIndex(int index); // получить следующий индекс
+  virtual int GetNextIndex(int index); // получить следующий индекс
 public:
   TQueue(int Size = 1) : TStack<ValType>(Size) { li = 0; };
   ValType Get(); // взять из очереди с удалением (#Л1)

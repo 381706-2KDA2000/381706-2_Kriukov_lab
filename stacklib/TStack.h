@@ -10,7 +10,9 @@ class TStack
 protected: // поля
   ValType * mem; // память для СД
   int top; // индекс последнего занятого в Mem
+  int datCount;
   int memSize;
+  virtual int GetNextIndex(int ind) { return ++ind; }
 public:
   TStack(int Size = 32);
   virtual ~TStack();
@@ -33,6 +35,7 @@ TStack<ValType>::TStack(int Size)
   else
     mem = new ValType[Size];
   top = -1;
+  datCount = 0;
   memSize = Size;
 }
 
@@ -47,7 +50,7 @@ TStack<ValType>::~TStack()
 template<class ValType>
 int TStack<ValType>::IsEmpty()
 {
-  return top == -1;
+  return datCount == 0;
 }
 
 template<class ValType>
@@ -59,14 +62,14 @@ int TStack<ValType>::GetSize()
 template<class ValType>
 int TStack<ValType>::GetCount()
 {
-  return top + 1;
+  return datCount;
 }
 
 template<class ValType>
 int TStack<ValType>::IsFull()
 {
 
-  return top == (memSize - 1);
+  return datCount == memSize;
 }
 
 template<class ValType>
@@ -74,7 +77,9 @@ void TStack<ValType>::Put(const int Val)
 {
   if (IsFull())
     throw TExeption(DataFull);
-  mem[++top] = Val;
+  datCount++;
+  top = GetNextIndex(top);
+  mem[top] = Val;
 }
 
 template<class ValType>
@@ -82,6 +87,7 @@ ValType TStack<ValType>::Get()
 {
   if (IsEmpty())
     throw TExeption(DataEmpty);
+  datCount--;
   return mem[top--];
 }
 
